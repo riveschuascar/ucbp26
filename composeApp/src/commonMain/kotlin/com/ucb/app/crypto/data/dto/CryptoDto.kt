@@ -13,7 +13,7 @@ data class CryptoDto(
     val price: Double,
     @SerialName(value = "market_cap_rank")
     val marketCapRank: Int,
-    @SerialName(value = "market_cap_change_24h")
+    @SerialName(value = "price_change_24h")
     val priceChange24h: Double,
     @SerialName(value = "high_24h")
     val high24h: Double,
