@@ -7,8 +7,13 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinSerialization)
+
+    // Firebase
     alias(libs.plugins.googleGmsGoogleServices)
 
+    // Room
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.androidx.room)
 }
 
 kotlin {
@@ -35,6 +40,10 @@ kotlin {
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.androidx.lifecycle.process)
+            // Room
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.androidx.sqlite.bundled)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -108,5 +117,11 @@ dependencies {
     implementation(libs.firebase.remote.config)
     implementation(libs.firebase.analytics)
     debugImplementation(libs.compose.uiTooling)
+
+    // Room
+    add("kspAndroid", libs.androidx.room.compiler)
 }
 
+room {
+    schemaDirectory("$projectDir/schemas")
+}

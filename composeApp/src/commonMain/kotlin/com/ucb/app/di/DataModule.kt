@@ -1,5 +1,7 @@
 package com.ucb.app.di
 
+import com.ucb.app.appevents.data.datasource.AppEventFirebaseDatasource
+import com.ucb.app.commonutils.connectivity.ConnectivityChecker
 import com.ucb.app.commonutils.data.datasource.remote.RemoteConfigManager
 import com.ucb.app.commonutils.data.repository.FirebaseConfigRepositoryImp
 import com.ucb.app.commonutils.domain.repository.ConfigRepository
@@ -22,6 +24,8 @@ val dataModule = module {
     // Instances
     singleOf(::RemoteConfigManager)
     singleOf(::RealtimeFirebaseDatasource)
+    singleOf(::AppEventFirebaseDatasource)
+    singleOf(::ConnectivityChecker)
 
     // Linking
     singleOf(::GitHubApiService).bind<GithubRemoteDataSource>()
