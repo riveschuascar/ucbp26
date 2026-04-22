@@ -25,6 +25,9 @@ class FirebaseConfigRepositoryImp(
     }
 
     override suspend fun getGreetingText(): String {
+        if (connectivityChecker.isConnected()) {
+            sync()
+        }
         return localDataSource.getConfig("greeting_text")
             ?: remoteConfig.getString("greeting_text")
     }
