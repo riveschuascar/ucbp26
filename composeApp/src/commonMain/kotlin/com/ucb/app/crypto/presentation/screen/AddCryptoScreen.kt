@@ -94,7 +94,7 @@ fun AddCryptoScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         Button(
-            onClick = { navController.navigate(NavRoute.Crypto.route) },
+            onClick = { navController.navigate(NavRoute.Crypto) },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = "Ver todas las cryptos")

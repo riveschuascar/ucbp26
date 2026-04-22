@@ -61,6 +61,8 @@ fun CryptoScreen(
             Text(text = "Crear crypto ficticia")
         }
 
+        Text(state.greeting)
+
         when {
             state.isLoading -> {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

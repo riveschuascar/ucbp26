@@ -2,13 +2,12 @@ package com.ucb.app.crypto.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ucb.app.crypto.domain.model.CryptoModel
+import com.ucb.app.commonutils.domain.usecase.GetGreetingTextUseCase
 import com.ucb.app.crypto.domain.usecase.GetCryptoUseCase
 import com.ucb.app.crypto.presentation.state.CryptoEffect
 import com.ucb.app.crypto.presentation.state.CryptoEvent
 import com.ucb.app.crypto.presentation.state.CryptoState
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -16,7 +15,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class CryptoViewModel(
-    private val getCryptoUseCase: GetCryptoUseCase
+    private val getCryptoUseCase: GetCryptoUseCase,
+    private val getGreetingTextUsecase: GetGreetingTextUseCase
 ): ViewModel() {
     private val _state = MutableStateFlow(CryptoState())
     val state = _state.asStateFlow()
@@ -37,10 +37,13 @@ class CryptoViewModel(
 
         viewModelScope.launch {
             try {
+                val greetingMessage = getGreetingTextUsecase.invoke()
                 val cryptosList = getCryptoUseCase.invoke()
+                println("GREETING: $greetingMessage")
                 _state.update {
                     it.copy(
                         isLoading = false,
+                        greeting = greetingMessage,
                         cryptos = cryptosList
                     )
                 }

@@ -1,5 +1,6 @@
 package com.ucb.app.di
 
+import com.ucb.app.commonutils.domain.usecase.GetGreetingTextUseCase
 import com.ucb.app.crypto.domain.usecase.GetCryptoUseCase
 import com.ucb.app.crypto.domain.usecase.SaveCryptoUseCase
 import com.ucb.app.github.domain.usecase.GetAvatarUseCase
@@ -12,4 +13,5 @@ val domainModule = module {
     singleOf(::GetMoviesUseCase)
     singleOf(::GetCryptoUseCase)
     singleOf(::SaveCryptoUseCase)
+    singleOf(::GetGreetingTextUseCase)
 }

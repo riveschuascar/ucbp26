@@ -1,5 +1,8 @@
 package com.ucb.app.di
 
+import com.ucb.app.commonutils.data.datasource.remote.RemoteConfigManager
+import com.ucb.app.commonutils.data.repository.FirebaseConfigRepositoryImp
+import com.ucb.app.commonutils.domain.repository.ConfigRepository
 import com.ucb.app.crypto.data.datasource.RealtimeFirebaseDatasource
 import com.ucb.app.crypto.data.repository.RealtimeFirebaseRepositoryImp
 import com.ucb.app.crypto.domain.repository.CryptoRepository
@@ -16,11 +19,15 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val dataModule = module {
+    // Instances
+    singleOf(::RemoteConfigManager)
+    singleOf(::RealtimeFirebaseDatasource)
+
+    // Linking
     singleOf(::GitHubApiService).bind<GithubRemoteDataSource>()
     singleOf(::GithubRepositoryImpl).bind<GithubRepository>()
     singleOf(::MovieRepositoryImpl).bind<MovieRepository>()
     singleOf(::MovieService).bind<MovieRemoteDatasource>()
-    singleOf(::RealtimeFirebaseDatasource)
     singleOf(::RealtimeFirebaseRepositoryImp).bind<CryptoRepository>()
-
+    singleOf(::FirebaseConfigRepositoryImp).bind<ConfigRepository>()
 }
