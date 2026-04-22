@@ -104,8 +104,9 @@ android {
 
 dependencies {
     implementation(libs.firebase.database)
-    implementation("com.google.firebase:firebase-config:23.0.1")
-    implementation("com.google.firebase:firebase-analytics:23.2.0")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.remote.config)
+    implementation(libs.firebase.analytics)
     debugImplementation(libs.compose.uiTooling)
 }
 
