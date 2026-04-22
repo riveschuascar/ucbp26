@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.googleGmsGoogleServices)
 
 }
 
@@ -16,7 +17,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosArm64(),
         iosSimulatorArm64()
@@ -26,7 +27,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
@@ -61,6 +62,9 @@ kotlin {
 
             implementation(libs.coil.compose)
             implementation(libs.coil.network)
+
+            //designsystem
+            implementation(project(":desingsystem"))
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -99,6 +103,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.firebase.database)
     debugImplementation(libs.compose.uiTooling)
 }
 

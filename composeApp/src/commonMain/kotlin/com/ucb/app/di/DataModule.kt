@@ -1,8 +1,7 @@
 package com.ucb.app.di
 
-import com.ucb.app.crypto.data.datasource.CoingeckoRemoteDataSource
-import com.ucb.app.crypto.data.repository.CryptoRepositoryImp
-import com.ucb.app.crypto.data.service.CoingeckoApiService
+import com.ucb.app.crypto.data.datasource.RealtimeFirebaseDatasource
+import com.ucb.app.crypto.data.repository.RealtimeFirebaseRepositoryImp
 import com.ucb.app.crypto.domain.repository.CryptoRepository
 import com.ucb.app.github.data.datasource.GithubRemoteDataSource
 import com.ucb.app.github.data.repository.GithubRepositoryImpl
@@ -21,7 +20,7 @@ val dataModule = module {
     singleOf(::GithubRepositoryImpl).bind<GithubRepository>()
     singleOf(::MovieRepositoryImpl).bind<MovieRepository>()
     singleOf(::MovieService).bind<MovieRemoteDatasource>()
-    singleOf(::CoingeckoApiService).bind<CoingeckoRemoteDataSource>()
-    singleOf(::CryptoRepositoryImp).bind<CryptoRepository>()
+    singleOf(::RealtimeFirebaseDatasource)
+    singleOf(::RealtimeFirebaseRepositoryImp).bind<CryptoRepository>()
 
 }

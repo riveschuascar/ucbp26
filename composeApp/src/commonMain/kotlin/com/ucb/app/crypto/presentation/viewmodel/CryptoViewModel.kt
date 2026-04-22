@@ -28,6 +28,7 @@ class CryptoViewModel(
         when (event) {
             CryptoEvent.OnLoad -> loadCrypto()
             CryptoEvent.OnRefresh -> loadCrypto()
+            CryptoEvent.OnSave -> TODO()
         }
     }
 

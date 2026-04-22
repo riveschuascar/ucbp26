@@ -2,30 +2,11 @@ package com.ucb.app.navigation
 
 import kotlinx.serialization.Serializable
 
-
 @Serializable
-sealed class NavRoute {
-
+sealed class NavRoute(val route: String) {
+    @Serializable
+    object Crypto : NavRoute("crypto")
 
     @Serializable
-    object Profile: NavRoute()
-
-
-    @Serializable
-    object ProfileEdit: NavRoute()
-
-    @Serializable
-    object Github: NavRoute()
-
-    @Serializable
-    object Movies: NavRoute()
-
-    @Serializable
-    object Crypto: NavRoute()
-
-    @Serializable
-    object FakeStore: NavRoute()
-
-    @Serializable
-    object CountryStore: NavRoute()
+    object AddCrypto : NavRoute("crypto_add")
 }
