@@ -10,7 +10,7 @@ actual class RemoteConfigManager {
 
     init {
         val configSettings = com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings.Builder()
-            .setMinimumFetchIntervalInSeconds(3600) // 1 hora
+            .setMinimumFetchIntervalInSeconds(30) // 30 seg
             .build()
 
         remoteConfig.setConfigSettingsAsync(configSettings)

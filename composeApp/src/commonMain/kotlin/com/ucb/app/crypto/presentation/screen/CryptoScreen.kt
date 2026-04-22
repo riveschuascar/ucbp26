@@ -61,7 +61,7 @@ fun CryptoScreen(
             Text(text = "Crear crypto ficticia")
         }
 
-        Text(state.greeting)
+        Text(text = "Configuración: ${state.greeting}")
 
         when {
             state.isLoading -> {

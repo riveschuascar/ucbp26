@@ -41,6 +41,7 @@ kotlin {
             implementation(libs.koin.androidx.compose)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.androidx.lifecycle.process)
+            implementation(libs.androidx.work.runtime.ktx)
             // Room
             implementation(libs.androidx.room.runtime)
             implementation(libs.androidx.sqlite.bundled)

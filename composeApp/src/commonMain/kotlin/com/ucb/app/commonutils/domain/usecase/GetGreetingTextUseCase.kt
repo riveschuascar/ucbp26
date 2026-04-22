@@ -5,7 +5,7 @@ import com.ucb.app.commonutils.domain.repository.ConfigRepository
 class GetGreetingTextUseCase (
     private val repository: ConfigRepository
 ) {
-    suspend fun invoke(): String {
+    suspend operator fun invoke(): String {
         return repository.getGreetingText()
     }
 }
